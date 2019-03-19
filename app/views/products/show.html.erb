@@ -1,5 +1,8 @@
  <h3> <%= @product.name %></h3>
  <p> <%= @product.price_format %></p>
    <p><i> <%= @product.description %></i></p>
+
+   <%= link_to("Edit Product", "/products/#{@product.id}/edit") %>
+   <%= link_to("Delete Product", "/products/#{@product.id}", method: :delete) %>
   
 </div>
