@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   def index
 
     if params[:category_id] && Category.ids.include?(params[:category_id].to_i)
@@ -26,10 +27,11 @@ class ProductsController < ApplicationController
                           description: params[:description],
                           price: params[:price],
                           image_url: params[:image_url],
-                          category_di: params[:category_id]
+                          category_id: params[:category_id]
                           )
     
     product.save
+    flash[:success] = "You created a new product"
     redirect_to "/products/#{product.id}"
   end
 
@@ -50,6 +52,7 @@ class ProductsController < ApplicationController
                           image_url: params[:image_url],
                           category_id: params[:category_id]
                           )
+      flash[:success] = "You updated the product"
     redirect_to "/products/#{product.id}"
       
     end
@@ -57,6 +60,7 @@ class ProductsController < ApplicationController
     def destroy
       product = Product.find(params[:id])
       product.destroy
+      flash[:success] = "You killed the product"
 
       redirect_to "/products"
       
