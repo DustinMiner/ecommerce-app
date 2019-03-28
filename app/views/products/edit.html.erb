@@ -1,25 +1,32 @@
 <h1>Edit product</h1>
+
 <%= form_tag("/products/#{@product.id}", method: :put) do %>
 
-<div class="form-group">
+<div class="row">
+<div class="col-sm-6">
 <%= label_tag(:name, "Edit product's name:") %>
 <%= text_field_tag(:name, @product.name, class: "form-control") %>
 </div>
 
+<div class="col-sm-6"
 <div class="form-group">
+  <%= label_tag(:category_id, "Select a Product Category:") %>
 <%= select_tag(:category_id, options_from_collection_for_select(@categories, :id, :name, @product.category_id), prompt: "Select Product Category", class: "form-control") %>
-<%= label_tag(:description, "Edit product's description") %>
 </div>
-
+</div>
+</div>
 <div class="form-group">
+<%= label_tag(:description, "Edit product's description") %>
 <%= text_area_tag(:description, @product.description, class: "form-control") %>
 <%= label_tag(:image_url, "Enter a URL to your product's image:") %>
-<%= text_field_tag(:image_url, @product.image_url) %>
+<%= text_field_tag(:image_url, @product.image_url, class: "form-control") %>
 </div>
 
-<div class="form-group">
+<div class= "row">
+<div class="col-sm-3">
 <%= label_tag(:price, " Edit product's price") %>
 <%= number_field_tag(:price, @product.price, class: "form-control") %>
+</div>
 </div>
   
 

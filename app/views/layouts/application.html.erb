@@ -24,30 +24,31 @@
               current_page?("/products") %>
             <% end %>
           </li>
-          <% if user_signed_in? %>
+            <% if user_signed_in? %>
            <li class="nav-item <%= 'active' if current_page?("/products/new") %>" >
             <%= link_to("/products/new", class: "nav-link") do %>
               New Product <%= (content_tag :span, "(current)", :class => "sr-only") if 
               current_page?("/products/new") %>
             <% end %>
-          </li>
+            </li>
           <% end %>
 
           <% if user_signed_in? %>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.email %>
+                <%= current_user.first_name %>
                   </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to('Edit Profile', edit_user_registration_path, class: "dropdown-item") %> 
+                <div class="dropdown-divider"></div>
                 <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "dropdown-item") %>
           </div>
         </li>
       <% else %>
       <li class="nav-item <%= 'active' if current_page?("/users/sign_in") %>" >
-                  <%= link_to("/users/sign_in", class: "nav-link") do %>
-                  Log In <%= (content_tag :span, "(current)", :class => "sr-only") if 
-                  current_page?("/users/sign_in") %>
+            <%= link_to("/users/sign_in", class: "nav-link") do %>
+            Log In <%= (content_tag :span, "(current)", :class => "sr-only") if
+            current_page?("/users/sign_in") %>
           <% end %>
         </li>
       <% end %>
@@ -56,12 +57,12 @@
 </nav>
 
 
-
     <div class="container main-content">
       <%= flash_messages %>
-
-
-    <%= yield %>
+        <%= yield %>
     </div>
   </body>
 </html>
+
+
+
