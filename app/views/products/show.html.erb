@@ -1,10 +1,15 @@
  <h3> <%= @product.name %></h3>
- <p> <%= @product.price_format %></p>
-   <p><i> <%= @product.description %></i></p>
  <%= image_tag(@product.image_url) %>
+ <p> <%= @product.price_format %></p>
+  <p><i> <%= @product.description %></i></p>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user.is_admin? %>
    <%= link_to("Edit Product", "/products/#{@product.id}/edit", class: "btn btn-primary") %>
    <%= link_to("Delete Product", "/products/#{@product.id}", method: :delete, class: "btn btn-danger") %>
-  <%end%>
+<%end%>
+
+<%= form_tag("/cart", method: :post) do %>
+  <%= hidden_field_tag(:product_id, @product.id) %>
+  <%= submit_tag("Add to cart", class: "btn btn-dark") %>
+<% end %>
 
