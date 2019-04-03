@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
     if @product.save
       flash[:success] = "You created a new product"
       redirect_to "/products/#{product.id}"
-
+      
     else
       @categories = Category.all
       flash[:error] = "Something went wrong!"
