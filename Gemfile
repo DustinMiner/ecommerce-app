@@ -5,6 +5,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'stripe'
 gem 'figaro'
+gem 'aws-sdk-s3', require: false
 
 ruby '2.5.0'
 

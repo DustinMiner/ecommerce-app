@@ -29,13 +29,13 @@ class ProductsController < ApplicationController
                           name: params[:name],
                           description: params[:description],
                           price: params[:price],
-                          image_url: params[:image_url],
+                          image: params[:image],
                           category_id: params[:category_id]
                           )
     
     if @product.save
       flash[:success] = "You created a new product"
-      redirect_to "/products/#{product.id}"
+      redirect_to "/products/#{@product.id}"
       
     else
       @categories = Category.all
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
                           name: params[:name],
                           description: params[:description],
                           price: params[:price],
-                          image_url: params[:image_url],
+                          image: params[:image],
                           category_id: params[:category_id]
                           )
 

@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<%= form_tag("/products", method: :post) do %>
+<%= form_tag("/products", multipart: true, method: :post) do %>
 
 <div class="row">
   <div class= "col-sm-6">
@@ -33,9 +33,9 @@
 <%= text_area_tag(:description, @product.description, class: "form-control") %>
 </div>
 
-<div class= "form-group">
-<%= label_tag(:image_url, "Enter a URL to oyur product's image:") %>
-<%= text_field_tag(:image_url, @product.image_url, class: "form-control") %>
+<div class= "custom-file" style= "margin-bottom: 1rem; margin-top: 1rem">
+<%= label_tag(:image, "Add an image", class: "custom-file-label") %>
+<%= file_field_tag(:image, class: "custom-file-input") %>
 </div>
 
 <div class= "row">

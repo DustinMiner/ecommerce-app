@@ -14,7 +14,7 @@
   </div>
 <% end %>
 
-<%= form_tag("/products/#{@product.id}", method: :put) do %>
+<%= form_tag("/products/#{@product.id}",multipart: true, method: :put) do %>
 
 <div class="row">
 <div class="col-sm-6">
@@ -29,6 +29,12 @@
 </div>
 </div>
 </div>
+
+<div class= "form-control" style= "margin-bottom: 1rem; margin-top: 1rem">
+<%= label_tag(:image, "Add an image") %>
+<%= file_field_tag(:image) %>
+</div>
+
 <div class="form-group">
 <%= label_tag(:description, "Edit product's description") %>
 <%= text_area_tag(:description, @product.description, class: "form-control") %>
